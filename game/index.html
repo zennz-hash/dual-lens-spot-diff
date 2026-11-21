@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dual Lens — The Inspector's Folio</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="hud-bar">
+      <div class="brand-block">
+        <span class="brand-crest" aria-hidden="true">◎</span>
+        <div>
+          <h1 class="brand-title">DUAL LENS</h1>
+          <p id="scene-subtitle" class="scene-subtitle">Plate I · The Clockmaker's Workshop</p>
+        </div>
+      </div>
+
+      <div class="hud-metrics">
+        <div class="metric-pill remaining-pill" id="remaining-pill">
+          <span class="metric-label">REMAINING</span>
+          <span class="metric-value" id="remaining-count">5</span>
+          <span class="metric-sub" id="found-fraction">0 / 5 FOUND</span>
+        </div>
+
+        <div class="pips-strip" id="diff-pips" aria-label="Differences progress"></div>
+
+        <div class="metric-pill score-pill">
+          <span class="metric-label">SCORE</span>
+          <span class="metric-value" id="score-value">0</span>
+          <span class="metric-sub" id="streak-badge">×1 STREAK</span>
+        </div>
+
+        <div class="metric-pill timer-pill" id="timer-pill">
+          <span class="metric-label">TIME</span>
+          <span class="metric-value" id="timer-value">01:30</span>
+          <span class="metric-sub" id="difficulty-badge">APPRENTICE</span>
+        </div>
+      </div>
+
+      <div class="hud-actions">
+        <button id="btn-hint" class="action-btn hint-btn" title="Reveal hint spotlight (H)">
+          <span class="btn-icon">✦</span> Hint <span id="hint-charges" class="charge-badge">3</span>
+        </button>
+        <button id="btn-loupe" class="action-btn" title="Toggle synchronized magnifying loupe (L / Shift)">
+          <span class="btn-icon">⌕</span> Loupe
+        </button>
+        <button id="btn-levels" class="action-btn" title="Choose folio plate">
+          Plates
+        </button>
+        <button id="btn-sound" class="action-btn icon-only" title="Toggle audio (M)" aria-label="Toggle sound">
+          ♪
+        </button>
+      </div>
+    </header>
+
+    <div class="timer-track" aria-hidden="true">
+      <div id="timer-fill" class="timer-fill"></div>
+    </div>
+
+    <main id="stage-frame" class="stage-frame">
+      <div class="panel-card">
+        <div class="panel-header">
+          <span class="panel-tag">ORIGINAL ARCHIVE</span>
+          <span class="panel-hint-key">Click or Space on either plate</span>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="canvas-left" width="580" height="460"></canvas>
+        </div>
+      </div>
+
+      <div class="center-divider" aria-hidden="true">
+        <span class="divider-badge">VS</span>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-header">
+          <span class="panel-tag altered-tag">ALTERED PLATE</span>
+          <span id="status-toast" class="status-toast">Inspect carefully…</span>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="canvas-right" width="580" height="460"></canvas>
+        </div>
+      </div>
+    </main>
+
+    <footer class="control-strip">
+      <span><strong>Mouse:</strong> Click any difference on either panel</span>
+      <span><strong>Keyboard:</strong> WASD / Arrows move reticle · Space inspect</span>
+      <span><strong>Tools:</strong> H Hint Spotlight · L / Shift Synced Loupe · P Pause</span>
+      <span id="total-progress" class="total-progress">Folio: 0 / 35 Found</span>
+    </footer>
+
+    <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true">
+      <div id="overlay-card" class="overlay-card"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
